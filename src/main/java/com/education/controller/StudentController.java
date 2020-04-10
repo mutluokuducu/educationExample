@@ -29,11 +29,11 @@ public class StudentController {
   @RequestMapping(value = "/student/{studentName}", method = RequestMethod.GET)
   public ResponseEntity<?> getStudent(@PathVariable String studentName) {
     Optional<Students> students = studentService.getStudent(studentName);
-    if (students==null) {
-      return new ResponseEntity(students, HttpStatus.NOT_FOUND);
+    if (students.isPresent()) {
+      return new ResponseEntity(students, HttpStatus.OK);
 
     } else {
-      return new ResponseEntity(students, HttpStatus.OK);
+      return new ResponseEntity(students, HttpStatus.NOT_FOUND);
     }
   }
 }
