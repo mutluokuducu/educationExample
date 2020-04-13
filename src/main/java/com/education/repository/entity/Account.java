@@ -19,6 +19,4 @@ public class Account {
 
   @Column
   private String details;
-
-
 }
