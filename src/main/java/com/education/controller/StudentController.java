@@ -1,5 +1,6 @@
 package com.education.controller;
 
+import com.education.repository.StudentRepository;
 import com.education.repository.entity.Students;
 import com.education.service.StudentService;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+//@RequestMapping(value = "/v1")
 public class StudentController {
 
   @Autowired
@@ -36,6 +38,14 @@ public class StudentController {
       return new ResponseEntity(students, HttpStatus.NOT_FOUND);
     }
   }
+
+  @RequestMapping(value = "student/{id}", method = RequestMethod.DELETE)
+  public ResponseEntity<?> deleteStudentById(@PathVariable Integer id){
+    studentService.deleteStudentById(id);
+    List<Students> getAllList=studentService.getAllStudent();
+    return new ResponseEntity(getAllList, HttpStatus.OK);
+  }
+
 }
 /*
  @RequestMapping(value = "/student/{studentName}", method = RequestMethod.GET)

@@ -24,6 +24,15 @@ public class StudentService {
     Optional<Students> getStudent = studentRepository.findByFullName(name);
     return getStudent.map(Optional::ofNullable).orElse(null);
   }
+
+  public void deleteStudentByIdAndName(Integer id,String name){
+    studentRepository.deleteByIdAndFullName(id,name);
+  }
+
+  public void deleteStudentById(Integer id){
+    studentRepository.deleteById(id);
+
+  }
 }
     /*
     if (!getStudent.isPresent()) {
