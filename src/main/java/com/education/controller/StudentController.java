@@ -75,10 +75,10 @@ public class StudentController {
     return new ResponseEntity(students, HttpStatus.OK);
 
     CRUD :
-    C:CREATE =POST
-    R:READ =GET
+    *C:CREATE =POST
+    *R:READ =GET
     U:UPDATE=UPDATE
-    D:DELETE=DELETE
+    *D:DELETE=DELETE
 
 
   }
