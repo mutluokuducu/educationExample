@@ -1,7 +1,12 @@
 package com.education.service;
 
+import static java.time.LocalTime.now;
+
+import com.education.dto.StudentsDto;
 import com.education.repository.StudentRepository;
 import com.education.repository.entity.Students;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +37,16 @@ public class StudentService {
   public void deleteStudentById(Integer id){
     studentRepository.deleteById(id);
 
+  }
+
+  public void  setStudent(StudentsDto studentsDto){
+    LocalDate date=LocalDate.now();
+    Students students=new Students();
+    students.setAddress(studentsDto.getAddress());
+    students.setFullName(studentsDto.getFullName());
+    students.setDate(date);
+
+    studentRepository.save(students);
   }
 }
     /*

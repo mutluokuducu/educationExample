@@ -1,5 +1,7 @@
 package com.education.repository.entity;
 
+import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,10 @@ public class Students {
   private  String  fullName;
   @Column
   private  String address;
+
+  @Column
+  private LocalDate date;
+
 
   public Students() {
   }
@@ -32,6 +38,14 @@ public class Students {
 
   public String getFullName() {
     return fullName;
+  }
+
+  public LocalDate getDate() {
+    return date;
+  }
+
+  public void setDate(LocalDate date) {
+    this.date = date;
   }
 
   public void setFullName(String fullName) {
