@@ -1,9 +1,9 @@
 $(document).ready(function () {
-loadCustomer();
+loadStudent();
 
 
 });
-function loadCustomer() {
+function loadStudent() {
 
     $.ajax({
         type: "GET",
@@ -16,16 +16,49 @@ function loadCustomer() {
 
             $.each(result, function (i, Student) {
 
-                var CustomerRow =
+                var studentRow =
                 '<tr>'+
+                 '<td>' + Student.id + '</td>'+
                 '<td>' + Student.fullName + '</td>'+
                 '<td>' + Student.address + '</td>' +
-
                 '</tr>';
 
-                $('#students').append(CustomerRow);
+                $('#students').append(studentRow);
 
             });
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function addStudent() {
+
+
+
+    var obj = {
+
+// fullName: $('#txtfullname').val(),
+// full name from db fields response fields
+//txtfullname is from htmls form id
+
+        fullName: $('#txtfullname').val(),
+        address: $('#txtaddress').val()
+
+    };
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "student",
+        data: JSON.stringify(obj),
+        dataType: 'json',
+
+        success: function (result) {
+
+            loadStudent();
+
 
 
         },

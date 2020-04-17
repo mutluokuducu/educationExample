@@ -55,4 +55,38 @@ public class StudentService {
     }
     return ofNullable(getStudent.get());
   }
+
+  List<BookOrder> bookOrderList = bookOrderService.getBookOrderByIdTest(orderId);
+        Double sumTotal= RoundUp.roundUpTwo (bookOrderList.stream().mapToDouble(value -> value.getTotalPrice()).sum());
+
+        String orderName=bookOrderList
+                .stream()
+                .map(l->l.getOrderName())
+                .findFirst()
+                .get();
+
+                ///////////
+                Iterable<BookOrder> findOrder = bookOrderRepository.findByOrderId(orderStatusRequest.getOrderId());
+
+        for (BookOrder orderStatus : findOrder) {
+
+            orderStatus.setOrderStatus(orderStatusRequest.getStatus());
+            //orderStatus.setMessageFromSeller(orderStatusRequest.getMessageFromSeller());
+            orderStatus.setStatusDate(LocalDate.now());
+
+
+            bookOrderRepository.save(orderStatus);
+
+        }
+
+         List<String> lines = Arrays.asList("spring", "node", "mkyong");
+
+        List<String> result = lines.stream()                // convert list to stream
+                .filter(line -> !"mkyong".equals(line))     // we dont like mkyong
+                .collect(Collectors.toList());              // collect the output and convert streams to a List
+
+        result.forEach(System.out::println);
+
+
+
      */

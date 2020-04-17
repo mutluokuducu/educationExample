@@ -58,7 +58,7 @@ function addCustomer() {
 
     var obj = {
 
-        companyName: $('#txtcustomername').val(),
+        fullName: $('#txtfullname').val(),
         contactName: $('#txtcontactname').val(),
         companyAddress: $('#txtadres').val(),
         city: $('#txtcity').val(),
