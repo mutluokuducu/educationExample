@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <title>test</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css"
+        href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <title>
+
+  </title>
 </head>
 <body>
-test 12222
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="txtfullname">Email address</label>
+      <input type="text" class="form-control" id="txtfullname" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="txtaddress">Password</label>
+      <input type="text" class="form-control" id="txtaddress" placeholder="Password">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="addStudent()">Submit</button>
+  </form>
+</div>
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <th> id</th>
+      <th> Name</th>
+      <th>adress</th>
+    </tr>
+    <tbody id="students" class="tbody">
+
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="test.js"></script>
 </body>
 </html>

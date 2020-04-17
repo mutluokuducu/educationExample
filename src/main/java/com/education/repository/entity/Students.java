@@ -13,6 +13,7 @@ public class Students {
   private Integer id;
   @Column
   private  String  fullName;
+
   @Column
   private  String address;
 
