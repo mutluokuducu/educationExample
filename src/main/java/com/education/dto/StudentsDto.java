@@ -1,5 +1,6 @@
 package com.education.dto;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,17 +11,20 @@ import javax.persistence.Table;
 
 public class StudentsDto {
 
-  private  String  fullName;
-  private  String address;
+  private Integer studentId;
+  private String fullName;
+  private String className;
 
   public StudentsDto() {
   }
 
-  public StudentsDto(String fullName, String address) {
-    this.fullName = fullName;
-    this.address = address;
+  public Integer getStudentId() {
+    return studentId;
   }
 
+  public void setStudentId(Integer studentId) {
+    this.studentId = studentId;
+  }
 
   public String getFullName() {
     return fullName;
@@ -30,11 +34,11 @@ public class StudentsDto {
     this.fullName = fullName;
   }
 
-  public String getAddress() {
-    return address;
+  public String getClassName() {
+    return className;
   }
 
-  public void setAddress(String address) {
-    this.address = address;
+  public void setClassName(String className) {
+    this.className = className;
   }
 }

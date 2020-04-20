@@ -1,11 +1,11 @@
-INSERT INTO students (fullName, address) VALUES
-  ('Karzan', 'Adres 1'),
-  ('Wisam', 'Adres 2'),
-  ('Ahmet1', 'Adres 3'),
-  ('Mahmut2', 'Adres 4'),
-  ('Wisam3', 'Adres 2'),
-  ('Ahmet5', 'Adres 3'),
-  ('Mahmut5', 'Adres 4');
+INSERT INTO students (studentId,fullName, className) VALUES
+  (10001,'Karzan', '10A'),
+  (10002,'Ahmet', '10A'),
+  (10003,'Kasim', '10A'),
+  (10004,'ALi', '10B'),
+  (10005,'Mahmut', '10B'),
+  (10006,'Celal', '10A');
+
 
 
 

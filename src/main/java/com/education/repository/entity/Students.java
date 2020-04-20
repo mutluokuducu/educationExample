@@ -1,44 +1,77 @@
 package com.education.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
-public class Students {
+public class Students  implements Serializable {
+
+//  @Id
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+//  private Integer id;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-  @Column
-  private  String  fullName;
+  @Column(updatable = false, nullable = false)
+  private Integer studentId;
 
   @Column
-  private  String address;
+  private String fullName;
+
+  @Column
+  private String className;
 
   @Column
   private LocalDate date;
 
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn(name = "studentId")
+  private List<StudentMark> studentMark=new ArrayList<>();
+
+  @OneToOne
+  @JoinColumn(name="studentId")
+  private Address address;
 
   public Students() {
   }
 
-  public Students(String fullName, String address) {
+  public Students(Integer studentId, String fullName, String className, LocalDate date,
+      List<StudentMark> studentMark, Address address) {
+    this.studentId = studentId;
     this.fullName = fullName;
+    this.className = className;
+    this.date = date;
+    this.studentMark = studentMark;
     this.address = address;
   }
 
-  public Integer getId() {
-    return id;
+  public Integer getStudentId() {
+    return studentId;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
+  public void setStudentId(Integer studentId) {
+    this.studentId = studentId;
   }
 
   public String getFullName() {
     return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  public String getClassName() {
+    return className;
+  }
+
+  public void setClassName(String className) {
+    this.className = className;
   }
 
   public LocalDate getDate() {
@@ -49,15 +82,19 @@ public class Students {
     this.date = date;
   }
 
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
+  public List<StudentMark> getStudentMark() {
+    return studentMark;
   }
 
-  public String getAddress() {
+  public void setStudentMark(List<StudentMark> studentMark) {
+    this.studentMark = studentMark;
+  }
+
+  public Address getAddress() {
     return address;
   }
 
-  public void setAddress(String address) {
+  public void setAddress(Address address) {
     this.address = address;
   }
 }
